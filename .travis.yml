@@ -1,0 +1,12 @@
+sudo: required # Making use of docker 
+services:
+    - docker # docker must be preinstalled for building images
+before_install: # all the things that need to be done before the app is setup
+    # Next 2 lines download, install and setup google sdk 
+    - openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv -in service-account.json.enc -out service-account.json -d
+    - curl https://sdk.cloud.google.com | bash > /dev/null; 
+    - source $HOME/google-cloud-sdk/path.bash.inc
+    - gcloud components update kubectl # update and install kubectl in environment
+    # Google Cloud authorization
+    - gcloud auth activate-service-account --key-file service-account.json
+      
