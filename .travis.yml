@@ -5,7 +5,7 @@ services:
 env:
     global:
         - SHA=$(git rev-parse HEAD)
-        - CLOUD_SDK_CORE_DISABLE_PROMPTS=1
+        - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 
 before_install: # all the things that need to be done before the app is setup
     # Next 2 lines download, install and setup google sdk 
